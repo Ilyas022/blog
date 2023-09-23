@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside,main{display: block;}
+
+
+html,body{
+	height: 100%;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+html{
+	font-family: 'Roboto', system-ui, sans-serif;
+}
+body{
+	@apply font-ms;
+	background-color: #f5f5f5;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+*a, *button {
+	color: inherit;
+}
+
+#root {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+main {
+	flex-grow: 1;
+}
+
+.editor-preview h1,h2,h3,h4,h5,h6 {
+	font-weight: bolder
+}
+
+.editor-preview h1, .MD h1 { font-size: 1.5rem;}
+.editor-preview h2, .MD h2 { font-size: 1.1rem;}
+.editor-preview h3, .MD h3 { font-size: .9rem;}
+.editor-preview h4, .MD h4 { font-size: .7rem;}
+.editor-preview h5, .MD h5 { font-size: .6rem;}
+.editor-preview h6, .MD h6 { font-size: .5rem;}
+
+.editor-preview ul, .MD ul {
+	list-style: disc;
+	padding-left: 40px;
+	margin: 16px 0;
+}
+.editor-preview ul li, .MD ul li {
+	list-style: disc;
+}
+
+.editor-preview ol, .MD ol {
+	list-style-type: decimal;
+	padding-left: 40px;
+	margin: 16px 0;
+}
