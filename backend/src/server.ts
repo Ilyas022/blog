@@ -6,10 +6,13 @@ import { createPostValidation, signInValidation, signUpValidation } from './vali
 import { commentController, postController, userController } from './controllers/index.js'
 import multer from 'multer'
 import { handleValidationErrors, checkAuth } from './utils/index.js'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 async function start() {
   await mongoose
-    .connect('mongodb+srv://admin:admin@cluster0.oqc7tz8.mongodb.net/?retryWrites=true&w=majority')
+    .connect(process.env.MONGODB__URL!)
     .then(() => console.log('Db ok'))
     .catch((err) => console.log('DB error', err))
 
@@ -78,7 +81,7 @@ async function start() {
   app.get('/users/:id', userController.getUser)
   app.get('/users', userController.getUsers)
 
-  app.listen(3003, () => {
+  app.listen(process.env.PORT || 3003, () => {
     console.log('Server ok')
   })
 }
