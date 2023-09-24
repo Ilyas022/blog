@@ -1,5 +1,7 @@
 {
   "version": 2,
   "builds": [{ "src": "src/server.ts", "use": "@vercel/node" }],
-  "routes": [{ "src": "/(.*)", "dest": "src/server.ts" }]
+  "routes": [{ "src": "/(.*)", "dest": "src/server.ts",
+  "methods": ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+  "allow": ["blog-sigma-henna.vercel.app"] }]
 }
