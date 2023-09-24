@@ -24,7 +24,9 @@ async function start() {
 
   const storage = multer.diskStorage({
     destination: (_a, _b, cb) => {
-      if (fs.existsSync('uploads')) {
+      if (!fs.existsSync('uploads')) {
+        console.log('madk dir')
+
         fs.mkdirSync('uploads')
       }
       cb(null, 'uploads')
