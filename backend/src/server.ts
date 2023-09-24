@@ -7,6 +7,7 @@ import { commentController, postController, userController } from './controllers
 import multer from 'multer'
 import { handleValidationErrors, checkAuth } from './utils/index.js'
 import dotenv from 'dotenv'
+import fs from 'fs'
 
 dotenv.config()
 
@@ -23,6 +24,9 @@ async function start() {
 
   const storage = multer.diskStorage({
     destination: (_a, _b, cb) => {
+      if (fs.existsSync('uploads')) {
+        fs.mkdirSync('uploads')
+      }
       cb(null, 'uploads')
     },
     filename: (_, file, cb) => {
