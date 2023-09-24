@@ -7,7 +7,8 @@
     "dev": "npx nodemon",
     "build": "tsc",
     "start": "npm run build && node dist/server",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "vercel-build": "echo hello"
   },
   "dependencies": {
     "@types/node": "^20.6.2",
