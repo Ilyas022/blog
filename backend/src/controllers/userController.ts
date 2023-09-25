@@ -9,10 +9,14 @@ export const signUp = async (req: Request, res: Response) => {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
+    const protocol = req.protocol
+    const hostname = req.hostname
+    const serverUrl = `${protocol}://${hostname}`
+
     const doc = new userModel({
       email: req.body.email,
       fullName: req.body.fullName,
-      avatarImg: req.file?.filename ? 'http://localhost:3003/uploads/' + req.file?.filename : '',
+      avatarImg: req.file?.filename ? `${serverUrl}:3003/uploads/${req.file.filename}` : '',
       passwordHash: hash,
       posts: [],
       about: "Hello, I'm a new user. Please be polite to me :)",

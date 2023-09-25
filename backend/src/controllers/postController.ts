@@ -9,8 +9,7 @@ export const create = async (req: Request, res: Response) => {
     if (req.file?.filename) {
       const protocol = req.protocol
       const hostname = req.hostname
-      const port = req.app.get('port')
-      const serverUrl = `${protocol}://${hostname}:${port}`
+      const serverUrl = `${protocol}://${hostname}`
 
       const posWithImage = new postModel({
         title: title,

@@ -18,6 +18,17 @@ const UsersPage: React.FC = (): JSX.Element => {
     }
     getUsers()
   }, [])
+
+  if (!users.length) {
+    return (
+      <main>
+        <div className="max-w-5xl mx-auto bg-white p-8 rounded-md flex flex-col gap-5">
+          There are no users
+        </div>
+      </main>
+    )
+  }
+
   return (
     <main>
       <div className="max-w-5xl mx-auto bg-white p-8 rounded-md flex flex-col gap-5">

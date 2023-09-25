@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npx nodemon",
     "build": "tsc",
-    "start": "npm run build && node dist/server",
+    "start": "npm run build && node public/server",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
