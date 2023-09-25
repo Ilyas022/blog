@@ -42,6 +42,7 @@ async function start() {
   app.use('/uploads', express.static('uploads'))
 
   // Auth
+  app.get('/auth/me', checkAuth, userController.getMe)
   app.post('/auth/signin', signInValidation, handleValidationErrors, userController.signIn)
   app.post(
     '/auth/signup',

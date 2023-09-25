@@ -16,7 +16,7 @@ export const signUp = async (req: Request, res: Response) => {
     const doc = new userModel({
       email: req.body.email,
       fullName: req.body.fullName,
-      avatarImg: req.file?.filename ? `${serverUrl}:3003/uploads/${req.file.filename}` : '',
+      avatarImg: req.file?.filename ? `${serverUrl}/uploads/${req.file.filename}` : '',
       passwordHash: hash,
       posts: [],
       about: "Hello, I'm a new user. Please be polite to me :)",

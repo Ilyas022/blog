@@ -4,10 +4,8 @@ import { useTypedSelector } from '../store/hooks/useTypedSelector'
 import { useActions } from '../store/hooks/useActions'
 
 const Header: React.FC = (): JSX.Element => {
-  const {
-    isLoged,
-    user: { id },
-  } = useTypedSelector((state) => state.user)
+  const { isLoged, user } = useTypedSelector((state) => state.user)
+  const id = user?.id
   const { logOutUser } = useActions()
 
   return (
@@ -28,7 +26,10 @@ const Header: React.FC = (): JSX.Element => {
             </Link>
             <button
               className="py-2 px-4 border-[1px] border-solid border-[] rounded-[4px] text-white bg-main"
-              onClick={() => logOutUser()}
+              onClick={() => {
+                localStorage.removeItem('token')
+                logOutUser()
+              }}
             >
               Log out
             </button>

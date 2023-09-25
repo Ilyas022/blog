@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { axiosInstance } from '../utils/axios'
+import { useNavigate } from 'react-router-dom'
 
 const UsersPage: React.FC = (): JSX.Element => {
+  const navigate = useNavigate()
   const [users, setUsers] = useState<
     { _id: string; avatarImg: string; fullName: string; email: string; about: string }[]
   >([])
@@ -10,11 +12,8 @@ const UsersPage: React.FC = (): JSX.Element => {
     const getUsers = async () => {
       try {
         const data = await axiosInstance.get('/users')
-        console.log(data)
         setUsers(data.data)
-      } catch (error) {
-        console.log(error)
-      }
+      } catch (error) {}
     }
     getUsers()
   }, [])
@@ -34,9 +33,10 @@ const UsersPage: React.FC = (): JSX.Element => {
       <div className="max-w-5xl mx-auto bg-white p-8 rounded-md flex flex-col gap-5">
         {users.map((user) => {
           return (
-            <div
+            <button
+              onClick={() => navigate(`/user/${user._id}`)}
               key={user._id}
-              className="flex gap-16 p-8 shadow-lg bg-white cursor-pointer hover: "
+              className="flex gap-16 p-8 shadow-lg bg-white cursor-pointer text-left"
             >
               <img
                 className="h-40 w-40 rounded-full object-cover"
@@ -52,7 +52,7 @@ const UsersPage: React.FC = (): JSX.Element => {
                 <div className="mb-5">{user.email}</div>
                 {user.about ? <div>{user.about}</div> : null}
               </div>
-            </div>
+            </button>
           )
         })}
       </div>

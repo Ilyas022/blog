@@ -5,7 +5,7 @@ export const axiosInstance = axios.create({
 })
 
 axiosInstance.interceptors.request.use((config) => {
-  const token = JSON.parse(JSON.parse(window.localStorage.getItem('persist:root')!).user).user.token
+  const token = window.localStorage.getItem('token')
 
   config.headers.Authorization = `Bearer ${token}`
   return config

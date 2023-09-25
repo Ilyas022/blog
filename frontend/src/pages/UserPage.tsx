@@ -32,7 +32,6 @@ const UserPage: React.FC = (): JSX.Element => {
       </main>
     )
   }
-  console.log(status)
 
   if (userStatus === 'failed') {
     return (

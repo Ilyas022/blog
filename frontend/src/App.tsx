@@ -3,13 +3,20 @@ import Layout from './components/Layout'
 import PostPage from './pages/PostPage'
 import Homepage from './pages/HomePage'
 import UserPage from './pages/UserPage'
-import React from 'react'
+import React, { useEffect } from 'react'
 import SignUpPage from './pages/SignUpPage'
 import LogInPage from './pages/LogInPage'
 import AddPostPage from './pages/AddPostPage'
 import UsersPage from './pages/UsersPage'
+import { useActions } from './store/hooks/useActions'
 
 const App: React.FC = (): JSX.Element => {
+  const { getMe } = useActions()
+
+  useEffect(() => {
+    getMe()
+  }, [getMe])
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
