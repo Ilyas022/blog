@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { axiosInstance } from '../../utils/axios'
 
 const saveToken = (token: string) => localStorage.setItem('token', token)
+const removeToken = () => localStorage.removeItem('token')
 
 export const loginUser = createAsyncThunk(
   'auth/login',
@@ -25,8 +26,13 @@ export const signupUser = createAsyncThunk('/auth/signup', async (params: FormDa
 })
 
 export const getMe = createAsyncThunk('/auth/me', async () => {
-  const res = await axiosInstance.get('auth/me')
-  return res.data
+  try {
+    const res = await axiosInstance.get('auth/me')
+    return res.data
+  } catch (error) {
+    removeToken()
+    return Promise.reject(error)
+  }
 })
 
 interface IInitialState {

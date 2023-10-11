@@ -65,6 +65,7 @@ const SignUpForm: React.FC<ISignUpForm> = ({ className }: ISignUpForm): JSX.Elem
                       type="file"
                       accept="image/*"
                       hidden
+                      onClick={(e) => (e.currentTarget.value = '')}
                       onChange={(e) => {
                         const image = e.target.files[0]
                         formik.setFieldValue('avatarImg', image)
